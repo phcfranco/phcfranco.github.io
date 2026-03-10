@@ -5,76 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedro Franco | Pharmaceutical Scientist</title>
     <style>
-        :root { --primary: #004a99; --secondary: #6c757d; --bg: #f8f9fa; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: auto; padding: 20px; background: var(--bg); }
+        :root { --primary: #004a99; --secondary: #6c757d; --accent: #eef4fb; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 850px; margin: auto; padding: 40px 20px; background: #fff; }
         
-        /* Summary Section */
-        .summary { text-align: center; padding: 40px 0; border-bottom: 1px solid #ddd; }
-        .summary h1 { margin: 0; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
+        /* Summary */
+        header { text-align: center; margin-bottom: 50px; }
+        h1 { margin: 0; color: var(--primary); font-size: 2.5rem; }
+        .subtitle { font-size: 1.2rem; color: var(--secondary); margin-top: 5px; font-weight: 600; }
+        .intro { margin-top: 20px; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        /* Timeline Container */
+        .timeline { position: relative; padding: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: #ddd; }
+
+        /* Timeline Item */
+        .item { position: relative; margin-bottom: 35px; padding-left: 45px; }
+        .item::before { content: ''; position: absolute; left: 8px; top: 8px; width: 16px; height: 16px; border-radius: 50%; background: var(--primary); border: 3px solid #fff; z-index: 2; }
         
-        /* Timeline Styling */
-        .timeline { position: relative; margin: 40px 0; padding-left: 30px; border-left: 3px solid var(--primary); }
-        .timeline-item { margin-bottom: 30px; position: relative; cursor: pointer; transition: 0.3s; }
-        .timeline-item:hover { color: var(--primary); }
-        .timeline-item::before { content: ''; position: absolute; left: -38px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--primary); border: 3px solid white; }
-        .date { font-size: 0.85rem; color: var(--secondary); font-weight: bold; }
+        .card { background: var(--accent); padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; border: 1px solid transparent; }
+        .card:hover { border-color: var(--primary); transform: translateX(5px); }
         
-        /* Hidden Details (The "Open" Info) */
-        .details { display: none; background: white; padding: 15px; border-radius: 8px; margin-top: 10px; border: 1px solid #eee; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        
-        /* Contact Tab */
-        .contact-tab { background: #333; color: white; padding: 20px; border-radius: 8px; margin-top: 50px; text-align: center; }
-        .btn { background: var(--primary); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 10px; }
+        .date { font-size: 0.85rem; font-weight: bold; color: var(--primary); text-transform: uppercase; }
+        .title { display: block; font-size: 1.15rem; font-weight: bold; margin: 3px 0; }
+        .location { font-size: 0.9rem; color: var(--secondary); }
+
+        /* Expandable Content */
+        .details { display: none; padding-top: 15px; border-top: 1px solid #d1d9e6; margin-top: 10px; font-size: 0.95rem; }
+        .details ul { padding-left: 18px; margin: 0; }
+        .details li { margin-bottom: 8px; }
+
+        /* Contact Section */
+        .contact { margin-top: 60px; padding: 30px; background: #222; color: #fff; border-radius: 12px; text-align: center; }
+        .btn { display: inline-block; padding: 10px 25px; background: var(--primary); color: #fff; text-decoration: none; border-radius: 5px; margin: 10px; font-weight: bold; }
+        .privacy-note { font-size: 0.8rem; color: #999; margin-top: 15px; }
     </style>
 </head>
 <body>
 
-    <section class="summary">
-        <h1>Pedro Franco</h1>
-        <p><strong>Ph.D. Candidate | Pharmaceutical Scientist</strong></p>
-        <p>Specializing in Pharmacometrics, LC-HRMS, and Data Science with 2+ years of industry R&D experience.</p>
-    </section>
+<header>
+    <h1>PEDRO FRANCO</h1>
+    <div class="subtitle">PH.D. CANDIDATE | PHARMACEUTICAL SCIENTIST</div>
+    <p class="intro">
+        Pharmaceutical scientist with over two years of industry experience in analytical R&D. 
+        Expert in statistical analysis of large datasets and cross-functional collaboration in international environments[cite: 4].
+    </p>
+</header>
 
-    <div class="timeline">
-        <div class="timeline-item" onclick="toggle('mp')">
-            <div class="date">12/2021 — Expected 05/2026</div>
-            <strong>Ph.D. Candidate</strong> @ Max-Planck Institute (Frankfurt)
-            <div id="mp" class="details">
+<div class="timeline">
+    <div class="item">
+        <div class="card" onclick="toggle('phd')">
+            <span class="date">12/2021 — Expected 05/2026</span>
+            <span class="title">Ph.D. Candidate (Biochemistry)</span>
+            <span class="location">Max-Planck Institute of Biophysics (Frankfurt, DE) [cite: 6, 8]</span>
+            <div id="phd" class="details">
                 <ul>
-                    <li>Developed LC-HRMS methods for protein identification.</li>
-                    <li>Implemented R pipelines for bioinformatics analysis.</li>
-                    <li>Applied AI-based approaches to biological datasets.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="timeline-item" onclick="toggle('hipo')">
-            <div class="date">06/2019 — 11/2021</div>
-            <strong>Analytical Development Analyst</strong> @ Hipolabor (Brazil)
-            <div id="hipo" class="details">
-                <ul>
-                    <li>Validated HPLC methods following ICH guidelines.</li>
-                    <li>Led OOS investigations and GMP-compliant documentation.</li>
+                    <li>Developed LC-HRMS methods for protein identification and quantitation[cite: 9].</li>
+                    <li>Implemented downstream analysis pipelines in R, integrating bioinformatics packages[cite: 10].</li>
+                    <li>Applied AI-based approaches to identify patterns in biological datasets[cite: 12].</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <section class="contact-tab">
-        <h3>Get In Touch</h3>
-        <p>Based in Frankfurt am Main. Work permit valid.</p>
-        <a href="mailto:pedrofrancobh@gmail.com" class="btn">Email Me</a>
-        <a href="https://linkedin.com/in/pedrohcfranco" class="btn" target="_blank">LinkedIn</a>
-        <p style="font-size: 0.8rem; margin-top: 15px; color: #bbb;">Phone and Address available upon request for privacy.</p>
-    </section>
+    <div class="item">
+        <div class="card" onclick="toggle('hipo')">
+            <span class="date">06/2019 — 11/2021</span>
+            <span class="title">Analytical Development Analyst</span>
+            <span class="location">Hipolabor Farmaceutica (Belo Horizonte, BR) [cite: 14, 15]</span>
+            <div id="hipo" class="details">
+                <ul>
+                    <li>Developed and validated HPLC methods following ICH guidelines[cite: 17].</li>
+                    <li>Prepared GMP-compliant documentation and led OOS investigations[cite: 20].</li>
+                    <li>Served as scientific expert for analytical troubleshooting[cite: 21].</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-    <script>
-        function toggle(id) {
-            var x = document.getElementById(id);
-            if (x.style.display === "block") { x.style.display = "none"; } 
-            else { x.style.display = "block"; }
+    <div class="item">
+        <div class="card" onclick="toggle('merck')">
+            <span class="date">06/2016 — 05/2017</span>
+            <span class="title">R&D Intern</span>
+            <span class="location">Merck Group (Darmstadt, DE) </span>
+            <div id="merck" class="details">
+                <ul>
+                    <li>Independently developed and validated HPLC methods for NCEs[cite: 34].</li>
+                    <li>Critically evaluated HPLC data and elaborated method reports[cite: 34].</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="contact">
+    <h2>Contact & Links</h2>
+    <p>Based in Frankfurt am Main | Valid work permit [cite: 55, 56]</p>
+    <a href="mailto:pedrofrancobh@gmail.com" class="btn">Email Me</a>
+    <a href="https://linkedin.com/in/pedrohcfranco" class="btn" target="_blank">LinkedIn</a>
+    <a href="https://orcid.org/0000-0002-3148-2319" class="btn" target="_blank">View 12 Publications </a>
+    <p class="privacy-note">Note: Full address and telephone number withheld for privacy. Available upon request.</p>
+</section>
+
+<script>
+    function toggle(id) {
+        const el = document.getElementById(id);
+        const allDetails = document.querySelectorAll('.details');
+        
+        // Optional: Close others when one opens
+        // allDetails.forEach(d => { if(d.id !== id) d.style.display = 'none'; });
+
+        if (el.style.display === "block") {
+            el.style.display = "none";
+        } else {
+            el.style.display = "block";
         }
-    </script>
+    }
+</script>
 
 </body>
 </html>
