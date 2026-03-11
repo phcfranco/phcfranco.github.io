@@ -16,17 +16,34 @@
       --muted: #5a6b61;
       --white: #ffffff;
       --rule: #b7dfc2;
+      --max-width: 1200px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); }
 
+    /* ── LAYOUT UTILITY ── */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 48px;
+    }
+
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 64px;
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--rule);
+      height: 64px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
     }
     .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--green-deep); text-decoration: none; }
     .nav-links { display: flex; gap: 36px; list-style: none; }
@@ -34,9 +51,10 @@
     .nav-links a:hover, .nav-links a.active { color: var(--green-deep); }
     .nav-links a.active { border-bottom: 2px solid var(--green-mid); padding-bottom: 2px; }
 
+    /* ── HEADER ── */
     .page-header {
       background: var(--green-light);
-      padding: 120px 64px 64px;
+      padding: 120px 0 64px;
       text-align: center;
     }
     .page-header p { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-deep); margin-bottom: 12px; }
@@ -52,18 +70,18 @@
     }
     .orcid-btn:hover { background: #1e4d38; }
 
-    .pub-list {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 64px 48px 96px;
-    }
+    /* ── PUBLICATIONS LIST ── */
+    .pub-section { padding: 64px 0 96px; }
+    
+    /* We limit the width of the list itself for readability, but center it within the 1200px container */
+    .pub-list-inner { max-width: 880px; margin: 0 auto; }
 
     .pub-year-group { margin-bottom: 52px; }
 
     .pub-year {
       font-family: 'DM Serif Display', serif;
       font-size: 2rem;
-      color: var(--green-light);
+      color: var(--green-mid);
       font-style: italic;
       margin-bottom: 20px;
       padding-bottom: 12px;
@@ -72,8 +90,8 @@
 
     .pub-card {
       display: flex;
-      gap: 20px;
-      padding: 22px 0;
+      gap: 24px;
+      padding: 24px 0;
       border-bottom: 1px solid var(--rule);
     }
     .pub-card:last-child { border-bottom: none; }
@@ -82,7 +100,7 @@
       font-family: 'DM Serif Display', serif;
       font-size: 1.6rem;
       color: var(--green-light);
-      min-width: 36px;
+      min-width: 40px;
       line-height: 1;
       padding-top: 4px;
     }
@@ -103,280 +121,151 @@
     .badge-collab { background: #f0f0f0; color: #666; }
 
     .pub-title {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 600;
       color: var(--ink);
       line-height: 1.45;
       margin-bottom: 6px;
     }
-    .pub-title a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.15s;
-    }
+    .pub-title a { color: inherit; text-decoration: none; transition: color 0.15s; }
     .pub-title a:hover { color: var(--green-deep); text-decoration: underline; }
 
-    .pub-authors {
-      font-size: 0.875rem;
-      color: var(--muted);
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
+    .pub-authors { font-size: 0.875rem; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
     .pub-authors strong { color: var(--green-deep); }
 
-    .pub-meta {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .pub-journal {
-      font-size: 0.85rem;
-      font-style: italic;
-      color: var(--green-deep);
-      font-weight: 500;
-    }
+    .pub-meta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .pub-journal { font-size: 0.85rem; font-style: italic; color: var(--green-deep); font-weight: 500; }
 
     .doi-link {
       font-size: 0.78rem;
       color: var(--muted);
       text-decoration: none;
       border: 1px solid var(--rule);
-      padding: 2px 9px;
+      padding: 2px 10px;
       border-radius: 99px;
       transition: all 0.15s;
       font-weight: 500;
     }
-    .doi-link:hover {
-      background: var(--green-deep);
-      border-color: var(--green-deep);
-      color: white;
-    }
+    .doi-link:hover { background: var(--green-deep); border-color: var(--green-deep); color: white; }
 
-    footer {
-      background: var(--ink); color: #a0b4a8;
-      text-align: center; padding: 32px 24px; font-size: 0.85rem;
-    }
+    footer { background: var(--ink); color: #a0b4a8; text-align: center; padding: 48px 0; font-size: 0.85rem; }
     footer a { color: var(--green-mid); text-decoration: none; }
 
     @media (max-width: 820px) {
-      nav { padding: 0 20px; }
+      .container { padding: 0 32px; }
       .nav-links { gap: 18px; }
-      .pub-list { padding: 40px 24px 80px; }
+      .pub-card { gap: 16px; }
+      .pub-number { min-width: 30px; font-size: 1.3rem; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">Pedro Franco</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="resume.html">Resume</a></li>
-    <li><a href="publications.html" class="active">Publications</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+  <div class="container nav-container">
+    <a href="index.html" class="nav-logo">Pedro Franco</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="publications.html" class="active">Publications</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
 <div class="page-header">
-  <p>Research Output</p>
-  <h1>Publications</h1>
-  <p class="subtitle">12 peer-reviewed articles in analytical chemistry, proteomics, and pharmaceutical sciences.</p>
-  <a href="https://orcid.org/0000-0002-3148-2319" target="_blank" class="orcid-btn">View on ORCID →</a>
+  <div class="container">
+    <p>Research Output</p>
+    <h1>Publications</h1>
+    <p class="subtitle">12 peer-reviewed articles in analytical chemistry, proteomics, and pharmaceutical sciences.</p>
+    <a href="https://orcid.org/0000-0002-3148-2319" target="_blank" class="orcid-btn">View on ORCID →</a>
+  </div>
 </div>
 
-<div class="pub-list">
+<div class="pub-section">
+  <div class="container">
+    <div class="pub-list-inner">
 
-  <!-- 2026 -->
-  <div class="pub-year-group">
-    <div class="pub-year">2026</div>
-    <div class="pub-card">
-      <div class="pub-number">12</div>
-      <div class="pub-content">
-        <span class="pub-badge badge-first">First Author</span>
-        <div class="pub-title"><a href="https://doi.org/10.1093/femsml/uqag005" target="_blank">Proteome characterization of single gene deletion mutants lacking zinc finger µ-proteins in Haloferax volcanii</a></div>
-        <div class="pub-authors"><strong>P.H.C. Franco</strong>, D. Üresin, A. Borst, L.A. Rusling, J. Soppa, J.D. Langer</div>
-        <div class="pub-meta">
-          <span class="pub-journal">microLife, 2026</span>
-          <a href="https://doi.org/10.1093/femsml/uqag005" target="_blank" class="doi-link">DOI →</a>
+      <div class="pub-year-group">
+        <div class="pub-year">2026</div>
+        <div class="pub-card">
+          <div class="pub-number">12</div>
+          <div class="pub-content">
+            <span class="pub-badge badge-first">First Author</span>
+            <div class="pub-title"><a href="https://doi.org/10.1093/femsml/uqag005" target="_blank">Proteome characterization of single gene deletion mutants lacking zinc finger µ-proteins in Haloferax volcanii</a></div>
+            <div class="pub-authors"><strong>P.H.C. Franco</strong>, D. Üresin, A. Borst, L.A. Rusling, J. Soppa, J.D. Langer</div>
+            <div class="pub-meta">
+              <span class="pub-journal">microLife, 2026</span>
+              <a href="https://doi.org/10.1093/femsml/uqag005" target="_blank" class="doi-link">DOI →</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year">2025</div>
+        <div class="pub-card">
+          <div class="pub-number">11</div>
+          <div class="pub-content">
+            <span class="pub-badge badge-collab">Collaboration</span>
+            <div class="pub-title"><a href="https://doi.org/10.1016/j.isci.2025.114123" target="_blank">Metabolic silencing induced by the small bacterial membrane protein YohP</a></div>
+            <div class="pub-authors">A. Natriashvili, et al., <strong>P.H.C. Franco</strong>, J.D. Langer, H.-G. Koch</div>
+            <div class="pub-meta">
+              <span class="pub-journal">iScience, 2025</span>
+              <a href="https://doi.org/10.1016/j.isci.2025.114123" target="_blank" class="doi-link">DOI →</a>
+            </div>
+          </div>
+        </div>
+        <div class="pub-card">
+          <div class="pub-number">10</div>
+          <div class="pub-content">
+            <span class="pub-badge badge-collab">Collaboration</span>
+            <div class="pub-title"><a href="https://doi.org/10.1021/acs.jcim.5c01639" target="_blank">Dissecting the RAD51-BRC4 Interaction Landscape</a></div>
+            <div class="pub-authors">V. Bresciani, et al., <strong>P. Franco</strong>, J.D. Langer, M. Masetti, M. Bernetti</div>
+            <div class="pub-meta">
+              <span class="pub-journal">J. Chem. Inf. Model., 2025</span>
+              <a href="https://doi.org/10.1021/acs.jcim.5c01639" target="_blank" class="doi-link">DOI →</a>
+            </div>
+          </div>
+        </div>
+        <div class="pub-card">
+          <div class="pub-number">9</div>
+          <div class="pub-content">
+            <span class="pub-badge badge-first">First Author</span>
+            <div class="pub-title"><a href="https://doi.org/10.1016/j.mcpro.2025.101052" target="_blank">Detection and quantitation of small proteins by mass spectrometry</a></div>
+            <div class="pub-authors"><strong>P.H.C. Franco</strong>, R. Zeinert, J. Meier-Credo, G. Storz, J.D. Langer</div>
+            <div class="pub-meta">
+              <span class="pub-journal">Molecular and Cellular Proteomics, 2025</span>
+              <a href="https://doi.org/10.1016/j.mcpro.2025.101052" target="_blank" class="doi-link">DOI →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year">2021</div>
+        <div class="pub-card">
+          <div class="pub-number">7</div>
+          <div class="pub-content">
+            <span class="pub-badge badge-first">First Author</span>
+            <div class="pub-title"><a href="https://doi.org/10.1002/bmc.5014" target="_blank">Stability-indicating method for the novel antifungal compound RI76</a></div>
+            <div class="pub-authors"><strong>P.H.C. Franco</strong>, S.F.P. Braga, R.B. Oliveira, I.C. César</div>
+            <div class="pub-meta">
+              <span class="pub-journal">Biomedical Chromatography, 2021</span>
+              <a href="https://doi.org/10.1002/bmc.5014" target="_blank" class="doi-link">DOI →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
   </div>
-
-  <!-- 2025 -->
-  <div class="pub-year-group">
-    <div class="pub-year">2025</div>
-
-    <div class="pub-card">
-      <div class="pub-number">11</div>
-      <div class="pub-content">
-        <span class="pub-badge badge-collab">Collaboration</span>
-        <div class="pub-title"><a href="https://doi.org/10.1016/j.isci.2025.114123" target="_blank">Metabolic silencing induced by the small bacterial membrane protein YohP</a></div>
-        <div class="pub-authors">A. Natriashvili, N. Mohammadsadeghi, M. Milanov, E. Smudde, I. Prucker, H.J. Jessen, I. Carabadjac, H. Heerklotz, <strong>P.H.C. Franco</strong>, J.D. Langer, H.-G. Koch</div>
-        <div class="pub-meta">
-          <span class="pub-journal">iScience, 2025</span>
-          <a href="https://doi.org/10.1016/j.isci.2025.114123" target="_blank" class="doi-link">DOI →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub-card">
-      <div class="pub-number">10</div>
-      <div class="pub-content">
-        <span class="pub-badge badge-collab">Collaboration</span>
-        <div class="pub-title"><a href="https://doi.org/10.1021/acs.jcim.5c01639" target="_blank">Dissecting the RAD51-BRC4 Interaction Landscape through Integrative Molecular Simulations and Experimental Biophysics</a></div>
-        <div class="pub-authors">V. Bresciani, F. Rinaldi, <strong>P. Franco</strong>, S. Girotto, A. Cavalli, J.D. Langer, M. Masetti, M. Bernetti</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Journal of Chemical Information and Modelling, 2025</span>
-          <a href="https://doi.org/10.1021/acs.jcim.5c01639" target="_blank" class="doi-link">DOI →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub-card">
-      <div class="pub-number">9</div>
-      <div class="pub-content">
-        <span class="pub-badge badge-first">First Author</span>
-        <div class="pub-title"><a href="https://doi.org/10.1016/j.mcpro.2025.101052" target="_blank">Detection and quantitation of small proteins by mass spectrometry</a></div>
-        <div class="pub-authors"><strong>P.H.C. Franco</strong>, R. Zeinert, J. Meier-Credo, G. Storz, J.D. Langer</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Molecular and Cellular Proteomics, 2025</span>
-          <a href="https://doi.org/10.1016/j.mcpro.2025.101052" target="_blank" class="doi-link">DOI →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub-card">
-      <div class="pub-number">8</div>
-      <div class="pub-content">
-        <span class="pub-badge badge-collab">Collaboration</span>
-        <div class="pub-title"><a href="https://doi.org/10.1038/s41594-025-01593-7" target="_blank">P-type ATPase magnesium transporter MgtA acts as a dimer</a></div>
-        <div class="pub-authors">R. Zeinert, F. Zhou, <strong>P. Franco</strong>, J. Zöller, Z.K. Madni, H. Lessen, L. Aravind, J.D. Langer, A.J. Sodt, G. Storz, D. Matthies</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Nature Structural and Molecular Biology, 2025</span>
-          <a href="https://doi.org/10.1038/s41594-025-01593-7" target="_blank" class="doi-link">DOI →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2021 -->
-  <div class="pub-year-group">
-    <div class="pub-year">2021</div>
-
-    <div class="pub-card">
-      <div class="pub-number">7</div>
-      <div class="pub-content">
-        <span class="pub-badge badge-first">First Author</span>
-        <div class="pub-title"><a href="https://doi.org/10.1002/bmc.5014" target="_blank">Stability-indicating method for the novel antifungal compound RI76 – characterization and in vitro antifungal activity of its active degradation product</a></div>
-        <div class="pub-authors"><strong>P.H.C. Franco</strong>, S.F.P. Braga, R.B. Oliveira, I.C. César</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Biomedical Chromatography, 2021</span>
-          <a href="https://doi.org/10.1002/bmc.5014" target="_blank" class="doi-link">DOI →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub-card">
-      <div class="pub-number">6</div>
-      <div class="pub-content">
-        <span class="pub-badge badge-collab">Collaboration</span>
-        <div class="pub-title"><a href="https://doi.org/10.1016/j.biopha.2020.110913" target="_blank">Electrochemical evidence of nitrate release from the nitrooxy compound 4-((nitrooxy)methyl)-3-nitrobenzoic acid and its antinociceptive and anti-inflammatory activities in mice</a></div>
-        <div class="pub-authors">A.V. Braga, R.R.L. Silva, I.B. Rodrigues, G.V.L. Marques, A.F.A. Xavier, A. Boane, M.R.B. Paiva, <strong>P.H.C. Franco</strong>, F.F. Rodrigues, I.S.F. Melo, A.S. Cunha Júnior, I.C. César, M.O.F. Goulart, R.B. Oliveira, M.M. Coelho, R.R. Machado</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Biomedicine &amp; Pharmacotherapy, 2021</span>
-          <a href="https://doi.org/10.1016/j.biopha.2020.110913" target="_blank" class="doi-link">DOI →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub-card">
-      <div class="pub-number">5</div>
-      <div class="pub-content">
-        <span class="pub-badge badge-collab">Collaboration</span>
-        <div class="pub-title"><a href="https://doi.org/10.1080/14786419.2019.1709186" target="_blank">Essential oils of Taxandria fragans and Melaleuca alternifolia have effective antidermatophytic activities in vitro and in vivo that are antagonized by ketoconazole and potentiated in gold nanospheres</a></div>
-        <div class="pub-authors">P.H.F. Carmo, M.C. Costa, <strong>P.H.C. Franco</strong>, A.C.P. Lage, C.E.V. Rocha, C.R. Chaves, A.A.G. Faraco, L.O. Ladeira, J.L. López Aguilar, I.C. César, T.A. Paixão, M.A. Resende-Stoianoff, D.A. Santos</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Natural Product Research, 2021</span>
-          <a href="https://doi.org/10.1080/14786419.2019.1709186" target="_blank" class="doi-link">DOI →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2020 -->
-  <div class="pub-year-group">
-    <div class="pub-year">2020</div>
-
-    <div class="pub-card">
-      <div class="pub-number">4</div>
-      <div class="pub-content">
-        <span class="pub-badge badge-first">First Author</span>
-        <div class="pub-title"><a href="https://doi.org/10.1002/mrc.4936" target="_blank">Purity determination of a new antifungal drug candidate using quantitative ¹H NMR spectroscopy: Method validation and comparison of calibration approaches</a></div>
-        <div class="pub-authors"><strong>P.H.C. Franco</strong>, S.F.P. Braga, R.B. de Oliveira, I.C. César</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Magnetic Resonance in Chemistry, 2020</span>
-          <a href="https://doi.org/10.1002/mrc.4936" target="_blank" class="doi-link">DOI →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2017 -->
-  <div class="pub-year-group">
-    <div class="pub-year">2017</div>
-
-    <div class="pub-card">
-      <div class="pub-number">3</div>
-      <div class="pub-content">
-        <span class="pub-badge badge-first">First Author</span>
-        <div class="pub-title"><a href="https://doi.org/10.5740/jaoacint.16-0200" target="_blank">Simultaneous Determination of First Line 4-FDC Antituberculosis Drugs by UHPLC-UV and HPLC-UV: A Comparative Study</a></div>
-        <div class="pub-authors"><strong>P.H.C. Franco</strong>, P.R. Chellini, M.A.L. Oliveira, G.A. Pianetti</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Journal of AOAC International, 2017</span>
-          <a href="https://doi.org/10.5740/jaoacint.16-0200" target="_blank" class="doi-link">DOI →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub-card">
-      <div class="pub-number">2</div>
-      <div class="pub-content">
-        <span class="pub-badge badge-collab">Collaboration</span>
-        <div class="pub-title"><a href="https://doi.org/10.1016/j.vibspec.2017.03.001" target="_blank">Simultaneous determination of rifampicin, isoniazid, pyrazinamide and ethambutol in 4-FDC tablet by Raman spectroscopy associated with chemometric approach</a></div>
-        <div class="pub-authors">P.R. Chellini, T.O. Mendes, <strong>P.H.C. Franco</strong>, B.L.S. Porto, V.K. Tippavajhala, I.C. César, M.A.L. Oliveira, G.A. Pianetti</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Vibrational Spectroscopy, 2017</span>
-          <a href="https://doi.org/10.1016/j.vibspec.2017.03.001" target="_blank" class="doi-link">DOI →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2015 -->
-  <div class="pub-year-group">
-    <div class="pub-year">2015</div>
-
-    <div class="pub-card">
-      <div class="pub-number">1</div>
-      <div class="pub-content">
-        <span class="pub-badge badge-collab">Collaboration</span>
-        <div class="pub-title"><a href="https://doi.org/10.5740/jaoacint.14-237" target="_blank">Development and validation of a HPLC method for simultaneous determination of rifampicin, isoniazid, pyrazinamide and ethambutol hydrochloride in pharmaceutical formulation</a></div>
-        <div class="pub-authors">P.R. Chellini, E.B. Lages, <strong>P.H. Franco</strong>, F.H. Nogueira, I.C. César, G.A. Pianetti</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Journal of AOAC International, 2015</span>
-          <a href="https://doi.org/10.5740/jaoacint.14-237" target="_blank" class="doi-link">DOI →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 <footer>
-  <p>© 2026 Pedro Franco · <a href="mailto:pedrofrancobh@gmail.com">pedrofrancobh@gmail.com</a> · <a href="https://linkedin.com/in/pedrohcfranco" target="_blank">LinkedIn</a></p>
+  <div class="container">
+    <p>© 2026 Pedro Franco · <a href="mailto:pedrofrancobh@gmail.com">pedrofrancobh@gmail.com</a> · <a href="https://linkedin.com/in/pedrohcfranco" target="_blank">LinkedIn</a></p>
+  </div>
 </footer>
 
 </body>
