@@ -17,13 +17,25 @@
       --white: #ffffff;
       --rule: #b7dfc2;
     }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 48px;
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); }
 
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 64px;
+      height: 64px;
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--rule);
@@ -36,7 +48,7 @@
 
     .page-header {
       background: var(--green-light);
-      padding: 120px 64px 64px;
+      padding: 120px 0 64px;
       text-align: center;
     }
     .page-header p { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-deep); margin-bottom: 12px; }
@@ -193,6 +205,7 @@
 <body>
 
 <nav>
+  <div class="container nav-container">
   <a href="index.html" class="nav-logo">Pedro Franco</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -200,11 +213,14 @@
     <li><a href="publications.html">Publications</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+  </div>
 </nav>
 
 <div class="page-header">
-  <p>Professional Profile</p>
-  <h1>Resume</h1>
+  <div class="container">
+    <p>Professional Profile</p>
+    <h1>Resume</h1>
+  </div>
 </div>
 
 <div class="resume-body">
