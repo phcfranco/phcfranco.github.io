@@ -209,6 +209,18 @@
     .sidebar-card ul { padding-left: 16px; }
     .sidebar-card li { margin-bottom: 6px; }
 
+    /* Vertical Stats adjustment */
+    .vertical-stats {
+      flex-direction: column !important; /* Force vertical stacking */
+      padding: 0 0 20px 0 !important;   /* Remove hero padding, add bottom margin */
+      gap: 12px !important;             /* Slightly tighter gap for the sidebar */
+    }
+    
+    /* Ensure the cards take full width of the sidebar */
+    .vertical-stats .stat-card {
+      width: 100%;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--ink); color: #a0b4a8;
@@ -283,30 +295,6 @@
     </div>
   </div>
 
-  <!-- Stat cards -->
-  <div class="hero-stats">
-    <div class="stat-card">
-      <div class="stat-icon">📄</div>
-      <div>
-        <span class="stat-number">12</span>
-        <span class="stat-label">Peer-reviewed publications</span>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon">🔬</div>
-      <div>
-        <span class="stat-number">8+</span>
-        <span class="stat-label">Years of research experience</span>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon">🏭</div>
-      <div>
-        <span class="stat-number">2+</span>
-        <span class="stat-label">Years in GMP environments</span>
-      </div>
-    </div>
-  </div>
 
 </section>
 
@@ -328,6 +316,37 @@
       </p>
     </div>
 
+    <div class="about-sidebar">
+      <div class="hero-stats vertical-stats">
+        <div class="stat-card">
+          <div class="stat-icon">🔬</div>
+          <div>
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Years of research experience</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🏭</div>
+          <div>
+            <span class="stat-number">2+</span>
+            <span class="stat-label">Years in GMP environments</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📄</div>
+          <div>
+            <span class="stat-number">12</span>
+            <span class="stat-label">Peer-reviewed publications</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h4>Based in</h4>
+        <p>Frankfurt am Main, Germany</p>
+      </div>
+    </div> 
+    </div> 
   </div>
 
 <footer>
