@@ -16,148 +16,73 @@
       --muted: #5a6b61;
       --white: #ffffff;
       --rule: #b7dfc2;
-      --max-width: 1200px; /* Increased to match index.html */
+      --max-width: 1200px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); line-height: 1.6; }
 
-    /* ── LAYOUT UTILITY ── */
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      width: 100%;
-      padding: 0 48px;
-    }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 48px; width: 100%; }
 
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--rule);
-      height: 64px;
-      display: flex;
-      align-items: center;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule); height: 64px; display: flex; align-items: center;
     }
-    .nav-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-    }
+    .nav-container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
     .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--green-deep); text-decoration: none; }
     .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { text-decoration: none; font-size: 0.88rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--green-deep); }
-    .nav-links a.active { border-bottom: 2px solid var(--green-mid); padding-bottom: 2px; }
+    .nav-links a { text-decoration: none; font-size: 0.88rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .nav-links a.active { color: var(--green-deep); border-bottom: 2px solid var(--green-mid); padding-bottom: 2px; }
 
     /* ── HEADER ── */
-    .page-header {
-      background: var(--green-light);
-      padding: 120px 0 64px;
-      text-align: center;
+    .page-header { background: var(--green-light); padding: 120px 0 64px; text-align: center; }
+    .page-header h1 { font-family: 'DM Serif Display', serif; font-size: 3rem; color: var(--ink); margin-bottom: 12px; }
+    .btn-download {
+      display: inline-block; margin-top: 20px; padding: 12px 24px;
+      background: var(--green-deep); color: white; text-decoration: none;
+      border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s;
     }
-    .page-header p { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-deep); margin-bottom: 12px; }
-    .page-header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); color: var(--ink); }
+    .btn-download:hover { background: #1e4d38; transform: translateY(-1px); }
 
-    /* ── RESUME LAYOUT ── */
+    /* ── RESUME CONTENT ── */
     .resume-section { padding: 80px 0; }
-    
-    .resume-grid {
-      display: grid;
-      grid-template-columns: 1fr 340px; /* Kept sidebar fixed, let content grow */
-      gap: 72px;
-      align-items: start;
+    .resume-grid { display: grid; grid-template-columns: 1fr 2.5fr; gap: 64px; }
+
+    /* Sidebar */
+    .resume-sidebar h3 { 
+      font-family: 'DM Serif Display', serif; font-size: 1.4rem; 
+      color: var(--green-deep); margin-bottom: 24px; border-bottom: 2px solid var(--green-light);
+      padding-bottom: 8px;
     }
+    .skill-group { margin-bottom: 32px; }
+    .skill-label { font-weight: 700; font-size: 0.75rem; text-transform: uppercase; color: var(--green-mid); display: block; margin-bottom: 8px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag { background: var(--green-pale); border: 1px solid var(--rule); padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; color: var(--muted); }
 
-    /* ── TIMELINE ── */
-    .timeline-section { margin-bottom: 64px; }
-    .section-label {
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--green-mid); margin-bottom: 8px;
+    /* Main Content */
+    .resume-main-section { margin-bottom: 56px; }
+    .resume-main-section h2 { 
+      font-family: 'DM Serif Display', serif; font-size: 1.8rem; 
+      margin-bottom: 32px; color: var(--ink); display: flex; align-items: center; gap: 12px;
     }
-    .section-title {
-      font-family: 'DM Serif Display', serif; font-size: 1.8rem;
-      color: var(--ink); margin-bottom: 36px;
-    }
+    .resume-main-section h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
 
-    .timeline { position: relative; padding-left: 28px; }
-    .timeline::before {
-      content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px;
-      width: 2px; background: var(--rule);
-    }
-
-    .tl-item { position: relative; margin-bottom: 12px; }
-    .tl-dot {
-      position: absolute; left: -28px; top: 20px;
-      width: 14px; height: 14px; border-radius: 50%;
-      background: var(--green-deep); border: 3px solid white;
-      box-shadow: 0 0 0 2px var(--green-mid);
-      z-index: 2;
-    }
-
-    .tl-card {
-      background: var(--green-pale);
-      border: 1px solid transparent;
-      border-radius: 10px;
-      padding: 22px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .tl-card:hover { border-color: var(--green-mid); transform: translateX(4px); background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-
-    .tl-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-    .tl-header-left { display: flex; align-items: flex-start; gap: 12px; flex: 1; }
-    .tl-logo { width: 40px; height: 40px; border-radius: 6px; border: 1px solid var(--rule); background: white; padding: 4px; object-fit: contain; }
-    
-    .tl-role { font-size: 1.05rem; font-weight: 600; color: var(--ink); display: block; }
-    .tl-org { font-size: 0.9rem; color: var(--muted); margin-top: 4px; }
-    .tl-date { font-size: 0.75rem; font-weight: 600; color: var(--green-deep); background: var(--green-light); padding: 4px 12px; border-radius: 99px; white-space: nowrap; }
-
-    .tl-details { display: none; padding-top: 16px; margin-top: 14px; border-top: 1px solid var(--rule); }
-    .tl-details ul { padding-left: 18px; }
-    .tl-details li { font-size: 0.92rem; color: var(--muted); line-height: 1.65; margin-bottom: 8px; }
-    .tl-details .sub-item { font-size: 0.82rem; color: var(--green-deep); font-style: italic; list-style: none; padding-left: 0; margin-top: 10px; }
-
-    /* ── SIDEBAR ── */
-    .sidebar-block {
-      background: var(--green-pale);
-      border: 1px solid var(--rule);
-      border-radius: 12px;
-      padding: 26px;
-      margin-bottom: 24px;
-    }
-    .sidebar-block h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-deep); margin-bottom: 18px; }
-
-    .skill-group { margin-bottom: 16px; }
-    .skill-group h4 { font-size: 0.82rem; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .skill-tag { font-size: 0.75rem; padding: 4px 10px; background: white; border: 1px solid var(--rule); border-radius: 99px; color: var(--muted); }
-
-    .lang-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    .lang-name { font-size: 0.9rem; color: var(--ink); font-weight: 500; }
-    .lang-level { font-size: 0.75rem; font-weight: 600; color: var(--green-deep); background: var(--green-light); padding: 3px 10px; border-radius: 99px; }
-
-    .link-btn {
-      display: block; text-align: center; padding: 11px 20px; margin-bottom: 10px;
-      background: var(--green-deep); color: white; text-decoration: none; border-radius: 6px;
-      font-size: 0.85rem; font-weight: 600; transition: background 0.2s;
-    }
-    .link-btn:hover { background: #1e4d38; }
-    .link-btn.outline { background: white; color: var(--green-deep); border: 2px solid var(--green-deep); }
-    .link-btn.outline:hover { background: var(--green-deep); color: white; }
-
-    .course-list { list-style: none; }
-    .course-list li { font-size: 0.88rem; color: var(--muted); padding: 8px 0; border-bottom: 1px solid var(--rule); }
-    .course-list li:last-child { border-bottom: none; }
+    .entry { margin-bottom: 40px; position: relative; }
+    .entry-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+    .entry-title { font-weight: 700; font-size: 1.1rem; color: var(--ink); }
+    .entry-org { color: var(--green-deep); font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
+    .entry-date { font-size: 0.85rem; color: var(--muted); font-weight: 500; white-space: nowrap; }
+    .entry-content { font-size: 0.95rem; color: var(--muted); }
+    .entry-content ul { padding-left: 18px; margin-top: 10px; }
+    .entry-content li { margin-bottom: 6px; }
 
     footer { background: var(--ink); color: #a0b4a8; text-align: center; padding: 48px 0; font-size: 0.85rem; }
     footer a { color: var(--green-mid); text-decoration: none; }
 
     @media (max-width: 900px) {
       .resume-grid { grid-template-columns: 1fr; }
-      .container { padding: 0 32px; }
-      .nav-links { gap: 18px; }
+      .container { padding: 0 24px; }
     }
   </style>
 </head>
@@ -177,238 +102,165 @@
 
 <div class="page-header">
   <div class="container">
-    <p>Professional Profile</p>
-    <h1>Resume</h1>
+    <h1>Curriculum Vitae</h1>
+    <a href="Resume_Pedro_Franco.pdf" class="btn-download">Download PDF Version</a>
   </div>
 </div>
 
-<div class="resume-section">
+<main class="resume-section">
   <div class="container">
     <div class="resume-grid">
+      
+      <aside class="resume-sidebar">
+        <div class="skill-group">
+          <h3>Technical Expertise</h3>
+          
+          <span class="skill-label">Mass Spectrometry</span>
+          <div class="skill-tags">
+            <span class="skill-tag">LC-MS/MS</span><span class="skill-tag">Orbitrap</span>
+            <span class="skill-tag">DDA/DIA</span><span class="skill-tag">Targeted PRM</span>
+            <span class="skill-tag">Native MS</span><span class="skill-tag">Top-down</span>
+          </div>
 
-      <main>
-        <div class="timeline-section">
-          <p class="section-label">Experience</p>
-          <h2 class="section-title">Professional History</h2>
+          <span class="skill-label" style="margin-top:20px">Chromatography</span>
+          <div class="skill-tags">
+            <span class="skill-tag">HPLC-DAD</span><span class="skill-tag">UHPLC</span>
+            <span class="skill-tag">Method Validation</span><span class="skill-tag">GMP/GLP</span>
+          </div>
 
-          <div class="timeline">
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-card" onclick="toggle('phd')">
-                <div class="tl-header">
-                  <div class="tl-header-left">
-                    <img src="logos/mpi.jpg" alt="MPI" class="tl-logo">
-                    <div>
-                      <span class="tl-role">Ph.D. Candidate</span>
-                      <div class="tl-org">Max-Planck Institute of Biophysics · Frankfurt, DE</div>
-                    </div>
-                  </div>
-                  <span class="tl-date">12/2021 — Present</span>
-                </div>
-                <div id="phd" class="tl-details">
-                  <ul>
-                    <li>Led a Ph.D. project on development and implementation of LC-HRMS methods for protein identification and quantification.</li>
-                    <li>Systematically analyzed MS-data using modern database search tools (FragPipe, DIA-NN) and self-developed downstream pipelines in R.</li>
-                    <li>Collaborated on multiple parallel MS-based proteomics projects, managing priorities and timelines.</li>
-                    <li>Performed maintenance on nanoLC (U3000) and MS systems (Thermo Orbitrap and Bruker timsTOF).</li>
-                    <li>Optimized and automated sample preparation using liquid-handling systems (Opentrons).</li>
-                    <li class="sub-item">→ Cell biology training at the National Institutes of Health (NIH), Bethesda, USA (2023)</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-card" onclick="toggle('hipo')">
-                <div class="tl-header">
-                  <div class="tl-header-left">
-                    <img src="logos/hipo.jpg" alt="hipo" class="tl-logo">
-                    <div>
-                      <span class="tl-role">Analytical Development Analyst</span>
-                      <div class="tl-org">Hipolabor Farmacêutica · Belo Horizonte, BR</div>
-                    </div>
-                  </div>
-                  <span class="tl-date">06/2019 — 11/2021</span>
-                </div>
-                <div id="hipo" class="tl-details">
-                  <ul>
-                    <li>Developed and validated HPLC-PDA methods for drug substances and products following ICH guidelines.</li>
-                    <li>Developed and applied LC-MS/MS (Waters QqQ) methods for quantitative analysis of impurities.</li>
-                    <li>Prepared SOPs and GMP-compliant documentation supporting product registration.</li>
-                    <li>Managed lifecycle of analytical methods including OOS investigations.</li>
-                    <li>Trained and coached technicians on data acquisition and HPLC operation.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-card" onclick="toggle('msc')">
-                <div class="tl-header">
-                  <div class="tl-header-left">
-                    <img src="logos/ufmg.jpg" alt="ufmg" class="tl-logo">
-                    <div>
-                      <span class="tl-role">M.Sc. Researcher</span>
-                      <div class="tl-org">Universidade Federal de Minas Gerais · Belo Horizonte, BR</div>
-                    </div>
-                  </div>
-                  <span class="tl-date">02/2018 — 02/2020</span>
-                </div>
-                <div id="msc" class="tl-details">
-                  <ul>
-                    <li>Synthesized drug candidates at a laboratory scale.</li>
-                    <li>Developed HPLC methods for impurity profiling and LC-MS/MS assays for PK studies.</li>
-                    <li>Carried out (q)NMR studies for structural and purity confirmation.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-card" onclick="toggle('merck')">
-                <div class="tl-header">
-                  <div class="tl-header-left">
-                    <img src="logos/merck.jpg" alt="merck" class="tl-logo">
-                    <div>
-                      <span class="tl-role">R&D Intern</span>
-                      <div class="tl-org">Merck Group · Darmstadt, DE</div>
-                    </div>
-                  </div>
-                  <span class="tl-date">06/2016 — 05/2017</span>
-                </div>
-                <div id="merck" class="tl-details">
-                  <ul>
-                    <li>Independently developed and validated HPLC methods for new chemical entities (NCEs).</li>
-                    <li>Critically evaluated HPLC data and elaborated detailed method development reports.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+          <span class="skill-label" style="margin-top:20px">Bioinformatics & Software</span>
+          <div class="skill-tags">
+            <span class="skill-tag">R / Bioconductor</span><span class="skill-tag">Proteome Discoverer</span>
+            <span class="skill-tag">Skyline</span><span class="skill-tag">MaxQuant</span>
+            <span class="skill-tag">Python (Basic)</span>
           </div>
         </div>
 
-        <div class="timeline-section">
-          <p class="section-label">Education</p>
-          <h2 class="section-title">Academic Background</h2>
-          <div class="timeline">
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-card" onclick="toggle('edu-phd')">
-                <div class="tl-header">
-                  <div class="tl-header-left">
-                    <img src="logos/gu.jpg" alt="gu" class="tl-logo">
-                    <div>
-                      <span class="tl-role">Ph.D. in Biochemistry</span>
-                      <div class="tl-org">Goethe University Frankfurt</div>
-                    </div>
-                  </div>
-                  <span class="tl-date">12/2021 — Present</span>
-                </div>
-                <div id="edu-phd" class="tl-details">
-                  <ul>
-                    <li>Thesis: Detection, quantitation, and characterization of small proteins by mass spectrometry.</li>
-                    <li class="sub-item">→ Visiting Researcher at NIH, USA (2023)</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-card" onclick="toggle('edu-bsc')">
-                <div class="tl-header">
-                  <div class="tl-header-left">
-                    <img src="logos/ufmg.jpg" alt="ufmg" class="tl-logo">
-                    <div>
-                      <span class="tl-role">B.Sc. in Pharmacy</span>
-                      <div class="tl-org">UFMG · Brazil</div>
-                    </div>
-                  </div>
-                  <span class="tl-date">2011 — 2017</span>
-                </div>
-                <div id="edu-bsc" class="tl-details">
-                  <ul>
-                    <li>Year abroad at Munster Technological University, Ireland (2015-2016).</li>
-                    <li>Research assistant in HPLC development and Organic Synthesis.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      <aside class="sidebar">
-        <div class="sidebar-block">
-          <h3>Technical Skills</h3>
-          <div class="skill-group">
-            <h4>Instrumentation</h4>
-            <div class="skill-tags">
-              <span class="skill-tag">nanoLC / (U)HPLC</span>
-              <span class="skill-tag">Orbitraps</span>
-              <span class="skill-tag">timsTOF</span>
-              <span class="skill-tag">Waters QqQ</span>
-              <span class="skill-tag">Opentrons</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <h4>Software</h4>
-            <div class="skill-tags">
-              <span class="skill-tag">R</span>
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">FragPipe</span>
-              <span class="skill-tag">DIA-NN</span>
-              <span class="skill-tag">Empower</span>
-              <span class="skill-tag">Chromeleon</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="sidebar-block">
+        <div class="skill-group">
           <h3>Languages</h3>
-          <div class="lang-row"><span class="lang-name">Portuguese</span><span class="lang-level">Native</span></div>
-          <div class="lang-row"><span class="lang-name">English</span><span class="lang-level">Fluent</span></div>
-          <div class="lang-row"><span class="lang-name">German</span><span class="lang-level">B2</span></div>
+          <p class="entry-content">
+            <strong>English:</strong> Professional Fluent<br>
+            <strong>German:</strong> Intermediate (B1/B2)<br>
+            <strong>Portuguese:</strong> Native
+          </p>
         </div>
 
-        <div class="sidebar-block">
-          <h3>Completed Courses</h3>
-          <ul class="course-list">
-            <li>Bioinformatics</li>
-            <li>Method Validation</li>
-            <li>Analytical QbD</li>
+        <div class="skill-group">
+          <h3>Key Training</h3>
+          <ul class="entry-content" style="list-style:none">
+            <li>• NIH Cell Biology Course (USA)</li>
+            <li>• Visiting Scholar - MTU (Ireland)</li>
+            <li>• Brazilian Pharmacopeia Contributor</li>
           </ul>
-        </div>
-
-        <div class="sidebar-block">
-          <h3>Profiles</h3>
-          <a href="https://orcid.org/0000-0002-3148-2319" target="_blank" class="link-btn">ORCID</a>
-          <a href="https://linkedin.com/in/pedrohcfranco" target="_blank" class="link-btn outline">LinkedIn</a>
         </div>
       </aside>
 
+      <div class="resume-main">
+        
+        <section class="resume-main-section">
+          <h2>Professional Experience</h2>
+
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">Ph.D. Researcher - Proteomics & Mass Spectrometry</span>
+              <span class="entry-date">2021 – Present</span>
+            </div>
+            <div class="entry-org">Max Planck Institute of Biophysics, Frankfurt am Main</div>
+            <div class="entry-content">
+              <ul>
+                <li>Developing high-resolution LC-MS/MS methods for the discovery and quantification of small proteins.</li>
+                <li>Managing untargeted (DDA/DIA) and targeted (PRM) proteomics workflows across diverse biological systems.</li>
+                <li>Developing R-based bioinformatics pipelines for automated data processing and multi-omic integration.</li>
+                <li>Collaborating with international research groups on membrane protein characterization.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">Analytical Development Analyst (GMP)</span>
+              <span class="entry-date">2018 – 2021</span>
+            </div>
+            <div class="entry-org">Laboratórios Globo, Brazil</div>
+            <div class="entry-content">
+              <ul>
+                <li>Developed and validated stability-indicating HPLC-PDA/UV methods for APIs and drug products.</li>
+                <li>Conducted forced degradation studies and impurity profiling in accordance with ICH guidelines.</li>
+                <li>Authored technical dossiers for regulatory submissions (ANVISA).</li>
+                <li>Maintained high-throughput analytical operations in a strict GMP-regulated environment.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">Global Graduate Intern - Pharmaceutical R&D</span>
+              <span class="entry-date">2017</span>
+            </div>
+            <div class="entry-org">Merck Group, Darmstadt, Germany</div>
+            <div class="entry-content">
+              <ul>
+                <li>Supported the development of solid dosage forms within the Global Formulation R&D department.</li>
+                <li>Utilized analytical techniques to assess drug release profiles and excipient compatibility.</li>
+                <li>Collaborated within a multicultural team in a leading international life science environment.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="resume-main-section">
+          <h2>Education</h2>
+
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">Ph.D. in Biophysics/Proteomics</span>
+              <span class="entry-date">Expected May 2026</span>
+            </div>
+            <div class="entry-org">Goethe University / Max Planck Institute, Frankfurt</div>
+            <div class="entry-content">Focus: Analytical method development for small protein characterization using LC-HRMS.</div>
+          </div>
+
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">M.Sc. in Pharmaceutical Sciences</span>
+              <span class="entry-date">2018 – 2020</span>
+            </div>
+            <div class="entry-org">Federal University of Minas Gerais (UFMG), Brazil</div>
+            <div class="entry-content">Specialization in Pharmaceutical Analysis and quality control of new antifungal candidates.</div>
+          </div>
+
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">Bachelor of Pharmacy (B.Pharm)</span>
+              <span class="entry-date">2012 – 2017</span>
+            </div>
+            <div class="entry-org">Federal University of Minas Gerais (UFMG), Brazil</div>
+            <div class="entry-content">Including a year abroad at Munster Technological University (MTU), Ireland via Science Without Borders.</div>
+          </div>
+        </section>
+
+        <section class="resume-main-section">
+          <h2>Selected Contributions</h2>
+          <div class="entry">
+            <div class="entry-org">Brazilian Pharmacopeia (6th Ed.)</div>
+            <div class="entry-content">Collaborated on the development of official monographs for antituberculosis fixed-dose combinations.</div>
+          </div>
+          <div class="entry">
+            <div class="entry-org">NIH Visiting Training (2023)</div>
+            <div class="entry-content">Intensive training in Cell Biology and advanced molecular techniques at the National Institutes of Health, Bethesda, USA.</div>
+          </div>
+        </section>
+
+      </div>
     </div>
   </div>
-</div>
+</main>
 
 <footer>
   <div class="container">
     <p>© 2026 Pedro Franco · <a href="mailto:pedrofrancobh@gmail.com">pedrofrancobh@gmail.com</a> · <a href="https://linkedin.com/in/pedrohcfranco" target="_blank">LinkedIn</a></p>
   </div>
 </footer>
-
-<script>
-  function toggle(id) {
-    const el = document.getElementById(id);
-    const isVisible = el.style.display === 'block';
-    // Close others
-    document.querySelectorAll('.tl-details').forEach(d => d.style.display = 'none');
-    // Open clicked
-    el.style.display = isVisible ? 'none' : 'block';
-  }
-</script>
 
 </body>
 </html>
