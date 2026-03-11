@@ -16,17 +16,34 @@
       --muted: #5a6b61;
       --white: #ffffff;
       --rule: #b7dfc2;
+      --max-width: 1200px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); min-height: 100vh; display: flex; flex-direction: column; }
 
+    /* ── LAYOUT UTILITY ── */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 48px;
+    }
+
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 64px;
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--rule);
+      height: 64px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
     }
     .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--green-deep); text-decoration: none; }
     .nav-links { display: flex; gap: 36px; list-style: none; }
@@ -34,44 +51,45 @@
     .nav-links a:hover, .nav-links a.active { color: var(--green-deep); }
     .nav-links a.active { border-bottom: 2px solid var(--green-mid); padding-bottom: 2px; }
 
+    /* ── HEADER ── */
     .page-header {
       background: var(--green-light);
-      padding: 120px 64px 64px;
+      padding: 120px 0 64px;
       text-align: center;
     }
     .page-header p { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-deep); margin-bottom: 12px; }
     .page-header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); color: var(--ink); margin-bottom: 16px; }
     .page-header .subtitle { font-size: 1rem; color: var(--muted); max-width: 480px; margin: 0 auto; }
 
-    .contact-body {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 80px 48px;
-      flex: 1;
+    /* ── CONTACT BODY ── */
+    .contact-section { padding: 80px 0; flex: 1; }
+    
+    .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: 80px;
       align-items: start;
     }
 
-    .contact-info h2 {
+    .contact-info h2, .contact-links h2 {
       font-family: 'DM Serif Display', serif;
       font-size: 1.8rem;
       color: var(--ink);
-      margin-bottom: 12px;
+      margin-bottom: 24px;
     }
+
     .contact-info p {
-      font-size: 0.98rem;
+      font-size: 1rem;
       color: var(--muted);
       line-height: 1.75;
-      margin-bottom: 36px;
+      margin-bottom: 40px;
     }
 
     .contact-item {
       display: flex;
       align-items: flex-start;
       gap: 16px;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .contact-icon {
@@ -82,181 +100,177 @@
       font-size: 1.2rem;
     }
 
-    .contact-detail {}
     .contact-detail .label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-mid); margin-bottom: 3px; }
-    .contact-detail a, .contact-detail span { font-size: 0.95rem; color: var(--ink); text-decoration: none; font-weight: 500; transition: color 0.15s; display: block; }
+    .contact-detail a, .contact-detail span { font-size: 1rem; color: var(--ink); text-decoration: none; font-weight: 500; transition: color 0.15s; display: block; }
     .contact-detail a:hover { color: var(--green-deep); }
 
-    .contact-links h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.8rem;
-      color: var(--ink);
-      margin-bottom: 24px;
-    }
-
+    /* ── PROFILE CARDS ── */
     .link-card {
       display: flex;
       align-items: center;
       gap: 16px;
-      padding: 18px 20px;
+      padding: 20px;
       background: var(--green-pale);
       border: 1px solid var(--rule);
-      border-radius: 10px;
+      border-radius: 12px;
       text-decoration: none;
       color: var(--ink);
-      margin-bottom: 14px;
-      transition: border-color 0.2s, transform 0.15s;
+      margin-bottom: 16px;
+      transition: all 0.2s ease;
     }
-    .link-card:hover { border-color: var(--green-mid); transform: translateX(4px); }
+    .link-card:hover { border-color: var(--green-mid); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(45, 106, 79, 0.08); }
 
     .link-card-icon {
-      width: 44px; height: 44px; min-width: 44px;
-      background: var(--green-light);
+      width: 48px; height: 48px; min-width: 48px;
+      background: var(--white);
+      border: 1px solid var(--rule);
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.3rem;
     }
 
-    .link-card-text .link-title { font-weight: 600; font-size: 0.95rem; color: var(--ink); }
-    .link-card-text .link-sub { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
+    .link-card-text .link-title { font-weight: 600; font-size: 1rem; color: var(--ink); }
+    .link-card-text .link-sub { font-size: 0.85rem; color: var(--muted); margin-top: 2px; }
+    .link-card-arrow { margin-left: auto; color: var(--green-mid); font-size: 1.1rem; transition: transform 0.2s; }
+    .link-card:hover .link-card-arrow { transform: translateX(4px); }
 
-    .link-card-arrow { margin-left: auto; color: var(--green-mid); font-size: 1.1rem; }
-
-    .ref-section {
-      max-width: 900px;
-      margin: 0 auto 80px;
-      padding: 0 48px;
-    }
-
-    .ref-section h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.8rem;
-      color: var(--ink);
-      margin-bottom: 24px;
-    }
-
-    .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-
+    /* ── REFERENCES ── */
+    .ref-section { padding-bottom: 80px; }
+    .ref-section h2 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-bottom: 32px; }
+    .ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    
     .ref-card {
-      background: var(--green-pale);
+      background: var(--white);
       border: 1px solid var(--rule);
-      border-radius: 10px;
-      padding: 22px 24px;
+      border-radius: 12px;
+      padding: 24px;
     }
-
-    .ref-name { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-    .ref-org { font-size: 0.88rem; color: var(--muted); margin-bottom: 10px; }
-    .ref-email { font-size: 0.85rem; color: var(--green-deep); text-decoration: none; }
+    .ref-name { font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .ref-org { font-size: 0.9rem; color: var(--muted); margin-bottom: 12px; line-height: 1.4; }
+    .ref-email { font-size: 0.88rem; color: var(--green-deep); text-decoration: none; font-weight: 500; }
     .ref-email:hover { text-decoration: underline; }
 
-    .privacy-note {
-      text-align: center;
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-top: 48px;
-      padding: 0 48px 48px;
-      max-width: 600px;
-      margin-left: auto; margin-right: auto;
-    }
-
-    footer {
-      background: var(--ink); color: #a0b4a8;
-      text-align: center; padding: 32px 24px; font-size: 0.85rem;
-    }
+    footer { background: var(--ink); color: #a0b4a8; text-align: center; padding: 48px 0; font-size: 0.85rem; }
     footer a { color: var(--green-mid); text-decoration: none; }
 
     @media (max-width: 820px) {
-      .contact-body { grid-template-columns: 1fr; gap: 40px; }
-      .ref-grid { grid-template-columns: 1fr; }
-      nav { padding: 0 20px; }
-      .nav-links { gap: 18px; }
+      .container { padding: 0 32px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 56px; }
+      .nav-links { display: none; } /* Consider a mobile menu for small screens */
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">Pedro Franco</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="resume.html">Resume</a></li>
-    <li><a href="publications.html">Publications</a></li>
-    <li><a href="contact.html" class="active">Contact</a></li>
-  </ul>
+  <div class="container nav-container">
+    <a href="index.html" class="nav-logo">Pedro Franco</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
 <div class="page-header">
-  <p>Get in Touch</p>
-  <h1>Contact</h1>
-  <p class="subtitle">Open to postdoctoral positions, industry roles, and scientific collaborations.</p>
+  <div class="container">
+    <p>Get in Touch</p>
+    <h1>Contact</h1>
+    <p class="subtitle">Open to postdoctoral positions, industry roles, and scientific collaborations.</p>
+  </div>
 </div>
 
-<div class="contact-body">
+<main class="contact-section">
+  <div class="container">
+    
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Direct Contact</h2>
+        <p>I am currently based in Frankfurt am Main and available for professional inquiries regarding analytical development, proteomics, and mass spectrometry.</p>
 
-  <div class="contact-info">
-    <h2>Direct Contact</h2>
-    <p>Feel free to reach out for professional opportunities or scientific discussions. I am currently based in Frankfurt am Main.</p>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-detail">
+            <div class="label">Email</div>
+            <a href="mailto:pedrofrancobh@gmail.com">pedrofrancobh@gmail.com</a>
+          </div>
+        </div>
 
-    <div class="contact-item">
-      <div class="contact-icon">✉️</div>
-      <div class="contact-detail">
-        <div class="label">Email</div>
-        <a href="mailto:pedrofrancobh@gmail.com">pedrofrancobh@gmail.com</a>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail">
+            <div class="label">Location</div>
+            <span>Frankfurt am Main, Germany</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📅</div>
+          <div class="contact-detail">
+            <div class="label">Availability</div>
+            <span>From May 2026 (Post-Doctoral)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-links">
+        <h2>Online Profiles</h2>
+
+        <a href="https://linkedin.com/in/pedrohcfranco" target="_blank" class="link-card">
+          <div class="link-card-icon">💼</div>
+          <div class="link-card-text">
+            <div class="link-title">LinkedIn</div>
+            <div class="link-sub">Connect professionally</div>
+          </div>
+          <span class="link-card-arrow">→</span>
+        </a>
+
+        <a href="https://orcid.org/0000-0002-3148-2319" target="_blank" class="link-card">
+          <div class="link-card-icon">🔬</div>
+          <div class="link-card-text">
+            <div class="link-title">ORCID</div>
+            <div class="link-sub">Researcher Profile</div>
+          </div>
+          <span class="link-card-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/pedro-franco" target="_blank" class="link-card">
+          <div class="link-card-icon">💻</div>
+          <div class="link-card-text">
+            <div class="link-title">GitHub</div>
+            <div class="link-sub">Data analysis pipelines</div>
+          </div>
+          <span class="link-card-arrow">→</span>
+        </a>
       </div>
     </div>
 
-    <div class="contact-item">
-      <div class="contact-icon">📍</div>
-      <div class="contact-detail">
-        <div class="label">Location</div>
-        <span>Frankfurt am Main, Germany</span>
+    <div class="ref-section" style="margin-top: 80px; border-top: 1px solid var(--rule); padding-top: 80px;">
+      <h2>References</h2>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <div class="ref-name">Dr. Julian Langer</div>
+          <div class="ref-org">Max Planck Institute of Biophysics / Goethe University Frankfurt</div>
+          <a href="mailto:julian.langer@biophys.mpg.de" class="ref-email">julian.langer@biophys.mpg.de</a>
+        </div>
+        
+        <div class="ref-card">
+          <div class="ref-name">Prof. Dr. Isabele César</div>
+          <div class="ref-org">Department of Pharmaceutical Products, Federal University of Minas Gerais</div>
+          <a href="mailto:isabelecesar@ufmg.br" class="ref-email">isabelecesar@ufmg.br</a>
+        </div>
       </div>
     </div>
 
-    <div class="contact-item">
-      <div class="contact-icon">📅</div>
-      <div class="contact-detail">
-        <div class="label">Availability</div>
-        <span>From May 2026 (post Ph.D. defense)</span>
-      </div>
-    </div>
   </div>
-
-  <div class="contact-links">
-    <h2>Online Profiles</h2>
-
-    <a href="https://linkedin.com/in/pedrohcfranco" target="_blank" class="link-card">
-      <div class="link-card-icon">💼</div>
-      <div class="link-card-text">
-        <div class="link-title">LinkedIn</div>
-        <div class="link-sub">pedrohcfranco</div>
-      </div>
-      <span class="link-card-arrow">→</span>
-    </a>
-
-    <a href="https://orcid.org/0000-0002-3148-2319" target="_blank" class="link-card">
-      <div class="link-card-icon">🔬</div>
-      <div class="link-card-text">
-        <div class="link-title">ORCID</div>
-        <div class="link-sub">0000-0002-3148-2319</div>
-      </div>
-      <span class="link-card-arrow">→</span>
-    </a>
-
-    <a href="mailto:pedrofrancobh@gmail.com" class="link-card">
-      <div class="link-card-icon">📧</div>
-      <div class="link-card-text">
-        <div class="link-title">Email Me Directly</div>
-        <div class="link-sub">pedrofrancobh@gmail.com</div>
-      </div>
-      <span class="link-card-arrow">→</span>
-    </a>
-  </div>
-
-</div>
+</main>
 
 <footer>
-  <p>© 2026 Pedro Franco · <a href="mailto:pedrofrancobh@gmail.com">pedrofrancobh@gmail.com</a> · <a href="https://linkedin.com/in/pedrohcfranco" target="_blank">LinkedIn</a></p>
+  <div class="container">
+    <p>© 2026 Pedro Franco · <a href="mailto:pedrofrancobh@gmail.com">pedrofrancobh@gmail.com</a> · <a href="https://linkedin.com/in/pedrohcfranco" target="_blank">LinkedIn</a></p>
+  </div>
 </footer>
 
 </body>
