@@ -38,7 +38,7 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh;
+      min-height: 80vh; /* Reduced from 100vh for tighter focus */
       background: var(--green-light);
       padding-top: 64px;
       display: flex;
@@ -67,7 +67,6 @@
       pointer-events: none;
     }
 
-    /* Top: photo + name/title/tags */
     .hero-top {
       display: flex;
       align-items: center;
@@ -78,7 +77,6 @@
       z-index: 1;
     }
 
-    /* Photo */
     .hero-photo-wrap { position: relative; flex-shrink: 0; }
     .hero-photo-wrap::before {
       content: '';
@@ -102,7 +100,6 @@
       background-repeat: no-repeat;
     }
 
-    /* Name + text block */
     .hero-text { flex: 1; }
     .hero-eyebrow {
       font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
@@ -139,37 +136,7 @@
     }
     .btn-outline:hover { background: var(--green-deep); color: white; }
 
-    /* Stat cards row — bottom of green hero */
-    .hero-stats {
-      display: flex;
-      gap: 20px;
-      padding: 0 80px 64px;
-      position: relative; z-index: 1;
-    }
-    .stat-card {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 22px 26px;
-      background: white;
-      border-radius: 12px;
-      border: 1px solid var(--rule);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-    }
-    .stat-icon {
-      font-size: 1.6rem;
-      line-height: 1;
-    }
-    .stat-number {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.8rem; color: var(--green-deep); display: block; line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.78rem; color: var(--muted); font-weight: 500; margin-top: 3px; display: block;
-    }
-
-    /* ── ABOUT (white section) ── */
+    /* ── ABOUT SECTION ── */
     .about-section {
       padding: 80px 80px 96px;
       max-width: 1200px;
@@ -195,36 +162,38 @@
       font-size: 1.05rem; line-height: 1.8; color: var(--muted);
       margin-bottom: 20px; text-align: justify;
     }
-    .sidebar-card {
-      background: var(--green-pale); border: 1px solid var(--rule);
-      border-radius: 12px; padding: 28px; margin-bottom: 20px;
-    }
-    .sidebar-card h4 {
-      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--green-deep); margin-bottom: 14px;
-    }
-    .sidebar-card p, .sidebar-card li {
-      font-size: 0.92rem; color: var(--muted); line-height: 1.6;
-    }
-    .sidebar-card ul { padding-left: 16px; }
-    .sidebar-card li { margin-bottom: 6px; }
 
-    /* Vertical Stats adjustment */
+    /* ── VERTICAL STATS ── */
     .vertical-stats {
-      flex-direction: column !important; /* Force vertical stacking */
-      padding: 0 0 20px 0 !important;   /* Remove hero padding, add bottom margin */
-      gap: 12px !important;             /* Slightly tighter gap for the sidebar */
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
     }
-    
-    /* Ensure the cards take full width of the sidebar */
-    .vertical-stats .stat-card {
-      width: 100%;
+    .stat-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 22px 26px;
+      background: white;
+      border-radius: 12px;
+      border: 1px solid var(--rule);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .stat-icon { font-size: 1.6rem; line-height: 1; }
+    .stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem; color: var(--green-deep); display: block; line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.78rem; color: var(--muted); font-weight: 500; margin-top: 3px; display: block;
     }
 
     /* ── FOOTER ── */
     footer {
       background: var(--ink); color: #a0b4a8;
-      text-align: center; padding: 32px 24px; font-size: 0.85rem;
+      text-align: center; padding: 48px 24px; font-size: 0.85rem;
+      width: 100%;
     }
     footer a { color: var(--green-mid); text-decoration: none; }
 
@@ -239,11 +208,10 @@
     .hero-tags     { animation: fadeUp 0.5s 0.3s ease both; }
     .hero-cta      { animation: fadeUp 0.5s 0.4s ease both; }
     .hero-photo-wrap { animation: fadeUp 0.6s 0.1s ease both; }
-    .hero-stats    { animation: fadeUp 0.6s 0.45s ease both; }
+    .vertical-stats { animation: fadeUp 0.6s 0.45s ease both; }
 
     @media (max-width: 900px) {
       .hero-top { flex-direction: column; align-items: flex-start; padding: 48px 32px 32px; }
-      .hero-stats { flex-direction: column; padding: 0 32px 48px; }
       .about-grid { grid-template-columns: 1fr; }
       .about-section { padding: 60px 32px; }
       nav { padding: 0 20px; }
@@ -263,16 +231,11 @@
   </ul>
 </nav>
 
-<!-- HERO (full green) -->
 <section class="hero">
-
   <div class="hero-top">
-    <!-- Photo -->
     <div class="hero-photo-wrap">
       <div class="hero-photo"></div>
     </div>
-
-    <!-- Name / title / tags / CTA -->
     <div class="hero-text">
       <p class="hero-eyebrow">Ph.D. Candidate · Max-Planck Institute of Biophysics</p>
       <h1 class="hero-name">Pedro<br>Franco</h1>
@@ -294,11 +257,8 @@
       </div>
     </div>
   </div>
-
-
 </section>
 
-<!-- ABOUT (white) -->
 <div class="about-section">
   <p class="section-label">About</p>
   <h2 class="section-title">Solving complex analytical challenges in <br><em>Proteomics & Drug Development</em></h2>
@@ -317,7 +277,7 @@
     </div>
 
     <div class="about-sidebar">
-      <div class="hero-stats vertical-stats">
+      <div class="vertical-stats">
         <div class="stat-card">
           <div class="stat-icon">🔬</div>
           <div>
@@ -340,14 +300,9 @@
           </div>
         </div>
       </div>
-
-      <div class="sidebar-card">
-        <h4>Based in</h4>
-        <p>Frankfurt am Main, Germany</p>
-      </div>
     </div> 
-    </div> 
-  </div>
+  </div> 
+</div>
 
 <footer>
   <p>© 2026 Pedro Franco · <a href="mailto:pedrofrancobh@gmail.com">pedrofrancobh@gmail.com</a> · <a href="https://linkedin.com/in/pedrohcfranco" target="_blank">LinkedIn</a></p>
