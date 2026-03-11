@@ -91,6 +91,24 @@
     .tl-card:hover { border-color: var(--green-mid); transform: translateX(4px); }
 
     .tl-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .tl-header-left { display: flex; align-items: flex-start; gap: 12px; flex: 1; }
+    .tl-logo {
+      width: 36px; height: 36px; min-width: 36px;
+      border-radius: 6px;
+      object-fit: contain;
+      border: 1px solid var(--rule);
+      background: white;
+      padding: 3px;
+    }
+    .tl-logo-placeholder {
+      width: 36px; height: 36px; min-width: 36px;
+      border-radius: 6px;
+      border: 1px solid var(--rule);
+      background: var(--green-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 700; color: var(--green-deep);
+      text-align: center; line-height: 1.2;
+    }
     .tl-role { font-size: 1.05rem; font-weight: 600; color: var(--ink); }
     .tl-date { font-size: 0.78rem; font-weight: 600; color: var(--green-deep); white-space: nowrap; background: var(--green-light); padding: 3px 10px; border-radius: 99px; }
     .tl-org { font-size: 0.9rem; color: var(--muted); margin-top: 4px; }
@@ -205,10 +223,15 @@
           <div class="tl-dot"></div>
           <div class="tl-card" onclick="toggle('phd')">
             <div class="tl-header">
-              <span class="tl-role">Ph.D. Candidate</span>
+              <div class="tl-header-left">
+                <div class="tl-logo-placeholder">MPI</div>
+                <div>
+                  <span class="tl-role">Ph.D. Candidate</span>
+                  <div class="tl-org">Max-Planck Institute of Biophysics · Frankfurt, DE</div>
+                </div>
+              </div>
               <span class="tl-date">12/2021 — Present</span>
             </div>
-            <div class="tl-org">Max-Planck Institute of Biophysics · Frankfurt, DE</div>
             <div id="phd" class="tl-details">
               <ul>
                 <li>Led a Ph.D. project on development and implementation of LC-HRMS methods for protein identification and quantification.</li>
@@ -227,10 +250,15 @@
           <div class="tl-dot"></div>
           <div class="tl-card" onclick="toggle('hipo')">
             <div class="tl-header">
-              <span class="tl-role">Analytical Development Analyst</span>
+              <div class="tl-header-left">
+                <div class="tl-logo-placeholder">HIPO</div>
+                <div>
+                  <span class="tl-role">Analytical Development Analyst</span>
+                  <div class="tl-org">Hipolabor Farmacêutica · Belo Horizonte, BR</div>
+                </div>
+              </div>
               <span class="tl-date">06/2019 — 11/2021</span>
             </div>
-            <div class="tl-org">Hipolabor Farmacêutica · Belo Horizonte, BR</div>
             <div id="hipo" class="tl-details">
               <ul>
                 <li>Developed and validated HPLC-PDA methods for drug substances and products following ICH guidelines.</li>
@@ -248,10 +276,15 @@
           <div class="tl-dot"></div>
           <div class="tl-card" onclick="toggle('msc')">
             <div class="tl-header">
-              <span class="tl-role">M.Sc. Researcher</span>
+              <div class="tl-header-left">
+                <div class="tl-logo-placeholder">UFMG</div>
+                <div>
+                  <span class="tl-role">M.Sc. Researcher</span>
+                  <div class="tl-org">Universidade Federal de Minas Gerais · Belo Horizonte, BR</div>
+                </div>
+              </div>
               <span class="tl-date">02/2018 — 02/2020</span>
             </div>
-            <div class="tl-org">Universidade Federal de Minas Gerais · Belo Horizonte, BR</div>
             <div id="msc" class="tl-details">
               <ul>
                 <li>Synthesized drug candidates at a laboratory scale.</li>
@@ -267,10 +300,15 @@
           <div class="tl-dot"></div>
           <div class="tl-card" onclick="toggle('merck')">
             <div class="tl-header">
-              <span class="tl-role">R&D Intern</span>
+              <div class="tl-header-left">
+                <div class="tl-logo-placeholder">Merck</div>
+                <div>
+                  <span class="tl-role">R&D Intern</span>
+                  <div class="tl-org">Merck Group · Darmstadt, DE</div>
+                </div>
+              </div>
               <span class="tl-date">06/2016 — 05/2017</span>
             </div>
-            <div class="tl-org">Merck Group · Darmstadt, DE</div>
             <div id="merck" class="tl-details">
               <ul>
                 <li>Independently developed and validated HPLC methods for new chemical entities (NCEs).</li>
@@ -294,10 +332,15 @@
           <div class="tl-dot"></div>
           <div class="tl-card" onclick="toggle('edu-phd')">
             <div class="tl-header">
-              <span class="tl-role">Ph.D. in Biochemistry</span>
+              <div class="tl-header-left">
+                <div class="tl-logo-placeholder">GU</div>
+                <div>
+                  <span class="tl-role">Ph.D. in Biochemistry</span>
+                  <div class="tl-org">Goethe University Frankfurt</div>
+                </div>
+              </div>
               <span class="tl-date">12/2021 — Present</span>
             </div>
-            <div class="tl-org">Goethe University Frankfurt</div>
             <div id="edu-phd" class="tl-details">
               <ul>
                 <li>Thesis: Detection, quantitation, and characterization of small proteins in prokaryotes by mass spectrometry</li>
@@ -312,10 +355,15 @@
           <div class="tl-dot"></div>
           <div class="tl-card" onclick="toggle('edu-msc')">
             <div class="tl-header">
-              <span class="tl-role">M.Sc. in Pharmaceutical Sciences</span>
+              <div class="tl-header-left">
+                <div class="tl-logo-placeholder">UFMG</div>
+                <div>
+                  <span class="tl-role">M.Sc. in Pharmaceutical Sciences</span>
+                  <div class="tl-org">Universidade Federal de Minas Gerais (UFMG) · Brazil</div>
+                </div>
+              </div>
               <span class="tl-date">01/2018 — 02/2020</span>
             </div>
-            <div class="tl-org">Universidade Federal de Minas Gerais (UFMG) · Brazil</div>
             <div id="edu-msc" class="tl-details">
               <ul>
                 <li>Thesis: Assessment of the degradation profile and pharmacokinetics of a new thiazolyl-hydrazone derivate as an antifungal drug candidate</li>
@@ -329,10 +377,15 @@
           <div class="tl-dot"></div>
           <div class="tl-card" onclick="toggle('edu-exc')">
             <div class="tl-header">
-              <span class="tl-role">Visiting Student</span>
+              <div class="tl-header-left">
+                <div class="tl-logo-placeholder">MTU</div>
+                <div>
+                  <span class="tl-role">Visiting Student</span>
+                  <div class="tl-org">Munster Technological University · Ireland</div>
+                </div>
+              </div>
               <span class="tl-date">09/2015 — 05/2016</span>
             </div>
-            <div class="tl-org">Munster Technological University · Ireland</div>
             <div id="edu-exc" class="tl-details">
               <ul>
                 <li>Exchange student funded by the Science Without Borders Program - Ministry of Education (Brazil)</li>
@@ -346,10 +399,15 @@
           <div class="tl-dot"></div>
           <div class="tl-card" onclick="toggle('edu-bsc')">
             <div class="tl-header">
-              <span class="tl-role">B.Sc. in Pharmacy</span>
+              <div class="tl-header-left">
+                <div class="tl-logo-placeholder">UFMG</div>
+                <div>
+                  <span class="tl-role">B.Sc. in Pharmacy</span>
+                  <div class="tl-org">Universidade Federal de Minas Gerais (UFMG) · Brazil</div>
+                </div>
+              </div>
               <span class="tl-date">03/2011 — 07/2017</span>
             </div>
-            <div class="tl-org">Universidade Federal de Minas Gerais (UFMG) · Brazil</div>
             <div id="edu-bsc" class="tl-details">
               <ul>
                 <li>Thesis: Study of an analytical method by ultra-high performance liquid chromatography for the first-choice anti-tuberculosis drugs in fixed-combined dose</li>
@@ -442,15 +500,7 @@
 </div>
 
 <footer>
-  <p>© 2026 Pedro Franco · <a href="mailto:pedrofrancobh@gmail.com">pedrofrancobh@gmail.com</a> · <a href="https://linkedin.com/in/pedrohcfranco" target="_blank">LinkedIn</a></p>
+  <p>© 2026 Pedro Franco · <a href="/cdn-cgi/l/email-protection#dcacb9b8aeb3baaebdb2bfb3beb49cbbb1bdb5b0f2bfb3b1"><span class="__cf_email__" data-cfemail="51213435233e3723303f323e333911363c30383d7f323e3c">[email&#160;protected]</span></a> · <a href="https://linkedin.com/in/pedrohcfranco" target="_blank">LinkedIn</a></p>
 </footer>
 
-<script>
-  function toggle(id) {
-    const el = document.getElementById(id);
-    el.style.display = el.style.display === 'block' ? 'none' : 'block';
-  }
-</script>
-
-</body>
-</html>
+<script data-cfasync="false" src="/cd
