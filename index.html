@@ -1,126 +1,486 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro Franco | Pharmaceutical Scientist</title>
-    <style>
-        :root { --primary: #004a99; --secondary: #6c757d; --accent: #eef4fb; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 850px; margin: auto; padding: 40px 20px; background: #fff; }
-        
-        /* Summary */
-        header { text-align: center; margin-bottom: 50px; }
-        h1 { margin: 0; color: var(--primary); font-size: 2.5rem; }
-        .subtitle { font-size: 1.2rem; color: var(--secondary); margin-top: 5px; font-weight: 600; }
-        .intro { margin-top: 20px; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pedro Franco | Pharmaceutical Scientist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-deep: #2d6a4f;
+      --green-mid: #52b788;
+      --green-light: #d8f3dc;
+      --green-pale: #f0faf2;
+      --ink: #1a1f1c;
+      --muted: #5a6b61;
+      --white: #ffffff;
+      --rule: #b7dfc2;
+    }
 
-        /* Timeline Container */
-        .timeline { position: relative; padding: 20px 0; }
-        .timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: #ddd; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Timeline Item */
-        .item { position: relative; margin-bottom: 35px; padding-left: 45px; }
-        .item::before { content: ''; position: absolute; left: 8px; top: 8px; width: 16px; height: 16px; border-radius: 50%; background: var(--primary); border: 3px solid #fff; z-index: 2; }
-        
-        .card { background: var(--accent); padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; border: 1px solid transparent; }
-        .card:hover { border-color: var(--primary); transform: translateX(5px); }
-        
-        .date { font-size: 0.85rem; font-weight: bold; color: var(--primary); text-transform: uppercase; }
-        .title { display: block; font-size: 1.15rem; font-weight: bold; margin: 3px 0; }
-        .location { font-size: 0.9rem; color: var(--secondary); }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      min-height: 100vh;
+    }
 
-        /* Expandable Content */
-        .details { display: none; padding-top: 15px; border-top: 1px solid #d1d9e6; margin-top: 10px; font-size: 0.95rem; }
-        .details ul { padding-left: 18px; margin: 0; }
-        .details li { margin-bottom: 8px; }
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
 
-        /* Contact Section */
-        .contact { margin-top: 60px; padding: 30px; background: #222; color: #fff; border-radius: 12px; text-align: center; }
-        .btn { display: inline-block; padding: 10px 25px; background: var(--primary); color: #fff; text-decoration: none; border-radius: 5px; margin: 10px; font-weight: bold; }
-        .privacy-note { font-size: 0.8rem; color: #999; margin-top: 15px; }
-    </style>
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--green-deep);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--green-deep); }
+    .nav-links a.active {
+      border-bottom: 2px solid var(--green-mid);
+      padding-bottom: 2px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 64px;
+    }
+
+    .hero-left {
+      background: var(--green-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -80px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(82,183,136,0.18);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      margin-bottom: 20px;
+    }
+
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 380px;
+      margin-bottom: 40px;
+    }
+
+    .hero-tags {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 48px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1.5px solid var(--green-mid);
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--green-deep);
+      background: white;
+    }
+
+    .hero-cta {
+      display: flex; gap: 14px; flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 13px 30px;
+      background: var(--green-deep);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #1e4d38; transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 2px solid var(--green-deep);
+      color: var(--green-deep);
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--green-deep); color: white; }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 80px 64px;
+      gap: 40px;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+    }
+
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute;
+      top: 16px; left: 16px;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: var(--green-light);
+      z-index: 0;
+    }
+
+    .hero-photo {
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
+
+    .hero-photo-placeholder {
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      background: var(--green-light);
+      border: 4px solid white;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: var(--green-mid);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 20px 12px;
+      background: var(--green-pale);
+      border-radius: 10px;
+      border: 1px solid var(--rule);
+    }
+
+    .stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--green-deep);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ── ABOUT SECTION ── */
+    .section {
+      padding: 96px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--ink);
+      margin-bottom: 32px;
+      line-height: 1.2;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .about-sidebar {}
+
+    .sidebar-card {
+      background: var(--green-pale);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-card h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      margin-bottom: 14px;
+    }
+
+    .sidebar-card p, .sidebar-card li {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .sidebar-card ul { padding-left: 16px; }
+    .sidebar-card li { margin-bottom: 6px; }
+
+    .lang-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .lang-name { font-size: 0.92rem; color: var(--ink); font-weight: 500; }
+    .lang-level {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--green-deep);
+      background: var(--green-light);
+      padding: 3px 10px;
+      border-radius: 99px;
+    }
+
+    /* ── DIVIDER ── */
+    .page-divider {
+      height: 1px;
+      background: var(--rule);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: #a0b4a8;
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.85rem;
+    }
+
+    footer a { color: var(--green-mid); text-decoration: none; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow { animation: fadeUp 0.5s ease both; }
+    .hero-name    { animation: fadeUp 0.5s 0.1s ease both; }
+    .hero-title   { animation: fadeUp 0.5s 0.2s ease both; }
+    .hero-tags    { animation: fadeUp 0.5s 0.3s ease both; }
+    .hero-cta     { animation: fadeUp 0.5s 0.4s ease both; }
+    .hero-photo-wrap { animation: fadeUp 0.6s 0.15s ease both; }
+    .hero-stats   { animation: fadeUp 0.6s 0.35s ease both; }
+
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { padding: 40px 32px; }
+      .about-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>PEDRO FRANCO</h1>
-    <div class="subtitle">PH.D. CANDIDATE | PHARMACEUTICAL SCIENTIST</div>
-    <p class="intro">
-        Pharmaceutical scientist with over two years of industry experience in analytical R&D. 
-        Expert in statistical analysis of large datasets and cross-functional collaboration in international environments[cite: 4].
+<nav>
+  <a href="index.html" class="nav-logo">Pedro Franco</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Ph.D. Candidate · Frankfurt am Main</p>
+    <h1 class="hero-name">Pedro<br>Franco</h1>
+    <p class="hero-title">
+      Pharmaceutical scientist specializing in LC-HRMS, proteomics, and analytical method development — bridging rigorous academic research with GMP-regulated industry experience.
     </p>
-</header>
-
-<div class="timeline">
-    <div class="item">
-        <div class="card" onclick="toggle('phd')">
-            <span class="date">12/2021 — Expected 05/2026</span>
-            <span class="title">Ph.D. Candidate (Biochemistry)</span>
-            <span class="location">Max-Planck Institute of Biophysics (Frankfurt, DE) [cite: 6, 8]</span>
-            <div id="phd" class="details">
-                <ul>
-                    <li>Developed LC-HRMS methods for protein identification and quantitation[cite: 9].</li>
-                    <li>Implemented downstream analysis pipelines in R, integrating bioinformatics packages[cite: 10].</li>
-                    <li>Applied AI-based approaches to identify patterns in biological datasets[cite: 12].</li>
-                </ul>
-            </div>
-        </div>
+    <div class="hero-tags">
+      <span class="tag">LC-HRMS</span>
+      <span class="tag">Proteomics</span>
+      <span class="tag">HPLC</span>
+      <span class="tag">R / Bioinformatics</span>
+      <span class="tag">GMP</span>
     </div>
-
-    <div class="item">
-        <div class="card" onclick="toggle('hipo')">
-            <span class="date">06/2019 — 11/2021</span>
-            <span class="title">Analytical Development Analyst</span>
-            <span class="location">Hipolabor Farmaceutica (Belo Horizonte, BR) [cite: 14, 15]</span>
-            <div id="hipo" class="details">
-                <ul>
-                    <li>Developed and validated HPLC methods following ICH guidelines[cite: 17].</li>
-                    <li>Prepared GMP-compliant documentation and led OOS investigations[cite: 20].</li>
-                    <li>Served as scientific expert for analytical troubleshooting[cite: 21].</li>
-                </ul>
-            </div>
-        </div>
+    <div class="hero-cta">
+      <a href="resume.html" class="btn-primary">View Resume</a>
+      <a href="contact.html" class="btn-outline">Get in Touch</a>
     </div>
+  </div>
 
-    <div class="item">
-        <div class="card" onclick="toggle('merck')">
-            <span class="date">06/2016 — 05/2017</span>
-            <span class="title">R&D Intern</span>
-            <span class="location">Merck Group (Darmstadt, DE) </span>
-            <div id="merck" class="details">
-                <ul>
-                    <li>Independently developed and validated HPLC methods for NCEs[cite: 34].</li>
-                    <li>Critically evaluated HPLC data and elaborated method reports[cite: 34].</li>
-                </ul>
-            </div>
-        </div>
+  <div class="hero-right">
+    <div class="hero-photo-wrap">
+      <!-- Replace src with your actual photo path -->
+      <div class="hero-photo-placeholder">👤</div>
+      <!-- <img src="photo.jpg" alt="Pedro Franco" class="hero-photo"> -->
     </div>
-</div>
-
-<section class="contact">
-    <h2>Contact & Links</h2>
-    <p>Based in Frankfurt am Main | Valid work permit [cite: 55, 56]</p>
-    <a href="mailto:pedrofrancobh@gmail.com" class="btn">Email Me</a>
-    <a href="https://linkedin.com/in/pedrohcfranco" class="btn" target="_blank">LinkedIn</a>
-    <a href="https://orcid.org/0000-0002-3148-2319" class="btn" target="_blank">View 12 Publications </a>
-    <p class="privacy-note">Note: Full address and telephone number withheld for privacy. Available upon request.</p>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="stat-number">12</span>
+        <span class="stat-label">Publications</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">8+</span>
+        <span class="stat-label">Years Research</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">2+</span>
+        <span class="stat-label">Years GMP</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<script>
-    function toggle(id) {
-        const el = document.getElementById(id);
-        const allDetails = document.querySelectorAll('.details');
-        
-        // Optional: Close others when one opens
-        // allDetails.forEach(d => { if(d.id !== id) d.style.display = 'none'; });
+<div class="page-divider"></div>
 
-        if (el.style.display === "block") {
-            el.style.display = "none";
-        } else {
-            el.style.display = "block";
-        }
-    }
-</script>
+<!-- ABOUT -->
+<section class="section">
+  <p class="section-label">About</p>
+  <h2 class="section-title">Science at the interface of<br><em>analytics and discovery</em></h2>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I am currently completing my Ph.D. in the Mass Spectrometry and Proteomics Facility of the Max-Planck Institute of Biophysics in Frankfurt (expected defense May 2026), under the supervision of Dr. Julian Langer. My doctoral project focuses on the development and implementation of LC-HRMS methods to identify and quantify small proteins — an understudied class with significant biological relevance.
+      </p>
+      <p>
+        Throughout my Ph.D., I have collaborated on multiple parallel projects across international and interdisciplinary groups, contributing to six scientific publications. My analytical toolkit spans untargeted (DDA and DIA) and targeted (PRM) LC-HRMS workflows, combined with self-developed downstream analysis pipelines in R integrating diverse bioinformatics packages.
+      </p>
+      <p>
+        Before my doctoral studies, I spent over two years as an Analytical Development Analyst at Hipolabor Farmacêutica in Brazil, where I developed and validated HPLC-PDA and LC-MS/MS methods in a GMP-regulated environment, prepared regulatory documentation, and mentored junior colleagues. An earlier internship at Merck Group in Darmstadt introduced me to the international pharmaceutical R&D landscape and fueled my drive to return to industry.
+      </p>
+    </div>
+
+    <div class="about-sidebar">
+      <div class="sidebar-card">
+        <h4>Languages</h4>
+        <div class="lang-row">
+          <span class="lang-name">Portuguese</span>
+          <span class="lang-level">Native</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">English</span>
+          <span class="lang-level">Fluent</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">German</span>
+          <span class="lang-level">B2</span>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h4>Key Achievements</h4>
+        <ul>
+          <li>Co-author of 12 scientific publications</li>
+          <li>Collaborator on the 6th edition of the Brazilian Pharmacopeia</li>
+          <li>Cell biology training at NIH, USA (2023)</li>
+          <li>Exchange studies at MTU, Ireland</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card">
+        <h4>Based in</h4>
+        <p>Frankfurt am Main, Germany<br>Valid work permit for Germany</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Pedro Franco · <a href="mailto:pedrofrancobh@gmail.com">pedrofrancobh@gmail.com</a> · <a href="https://linkedin.com/in/pedrohcfranco" target="_blank">LinkedIn</a> · <a href="https://orcid.org/0000-0002-3148-2319" target="_blank">ORCID</a></p>
+</footer>
 
 </body>
 </html>
