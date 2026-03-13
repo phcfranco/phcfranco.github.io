@@ -25,14 +25,32 @@
 
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--rule); height: 64px; display: flex; align-items: center;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
-    .nav-container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--green-deep); text-decoration: none; letter-spacing: 0.02em; }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
+    nav::-webkit-scrollbar { display: none; }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      min-width: max-content;
+      padding: 0 48px;
+      gap: 48px;
+    }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--green-deep); text-decoration: none; letter-spacing: 0.02em; white-space: nowrap; }
+    .nav-links { display: flex; gap: 32px; list-style: none; white-space: nowrap; }
     .nav-links a { text-decoration: none; font-size: 0.88rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--green-deep); }
+    .nav-links a.active { border-bottom: 2px solid var(--green-mid); padding-bottom: 2px; }
     .nav-links a.active { border-bottom: 2px solid var(--green-mid); padding-bottom: 2px; }
 
     .hero {
@@ -131,14 +149,13 @@
       .container { padding: 0 32px; }
       .hero-top { flex-direction: column; align-items: flex-start; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .nav-links { gap: 18px; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <div class="container nav-container">
+  <div class="nav-container">
     <a href="index.html" class="nav-logo">Pedro Franco</a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>

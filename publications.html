@@ -38,17 +38,26 @@
       height: 64px;
       display: flex;
       align-items: center;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
+    nav::-webkit-scrollbar { display: none; }
     .nav-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
+      min-width: max-content;
+      padding: 0 48px;
+      gap: 48px;
     }
-    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--green-deep); text-decoration: none; }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--green-deep); text-decoration: none; letter-spacing: 0.02em; white-space: nowrap; }
+    .nav-links { display: flex; gap: 32px; list-style: none; white-space: nowrap; }
     .nav-links a { text-decoration: none; font-size: 0.88rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--green-deep); }
+    .nav-links a.active { border-bottom: 2px solid var(--green-mid); padding-bottom: 2px; }
     .nav-links a.active { border-bottom: 2px solid var(--green-mid); padding-bottom: 2px; }
 
     /* ── HEADER ── */
@@ -150,7 +159,6 @@
 
     @media (max-width: 820px) {
       .container { padding: 0 32px; }
-      .nav-links { gap: 18px; }
       .pub-card { gap: 16px; }
       .pub-number { min-width: 30px; font-size: 1.3rem; }
     }
@@ -159,7 +167,7 @@
 <body>
 
 <nav>
-  <div class="container nav-container">
+  <div class="nav-container">
     <a href="index.html" class="nav-logo">Pedro Franco</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
