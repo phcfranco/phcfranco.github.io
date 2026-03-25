@@ -74,7 +74,7 @@
       margin: 0 auto;
       padding: 80px 48px;
       display: grid;
-      grid-template-columns: 1fr 340px;
+      grid-template-columns: 1fr 400px;
       gap: 72px;
       align-items: start;
     }
@@ -209,6 +209,8 @@
       text-align: center; padding: 32px 24px; font-size: 0.85rem;
     }
     footer a { color: var(--green-mid); text-decoration: none; }
+    .course-list li span { font-size: 0.78rem; color: var(--green-deep); font-weight: 500; }
+    .course-list li strong { font-size: 0.88rem; color: var(--ink); }
 
     @media (max-width: 820px) {
       .resume-body {
@@ -216,6 +218,8 @@
         padding: 40px 20px;
         gap: 40px;
       }
+      .resume-body > div { order: 1; }
+      .resume-body > aside { order: 2; }
       .page-header { padding: 100px 20px 48px; }
       .tl-card { padding: 14px 16px; }
       .tl-header { flex-wrap: wrap; gap: 8px; }
@@ -503,34 +507,44 @@
     <div class="sidebar-block">
       <h3>Technical Skills</h3>
       <div class="skill-group">
-        <h4>Instrumentation</h4>
+        <h4>Proteomics & Mass Spectrometry</h4>
         <div class="skill-tags">
-          <span class="skill-tag">nanoLC / (U)HPLC</span>
+          <span class="skill-tag">Bottom-up Proteomics</span>
+          <span class="skill-tag">Top-down Proteomics</span>
+          <span class="skill-tag">Targeted Proteomics</span>
+          <span class="skill-tag">Peptide mapping</span>
+          <span class="skill-tag">Intact mass (MALDI-QTOF)</span>
           <span class="skill-tag">Orbitraps (HRMS)</span>
           <span class="skill-tag">timsTOF (IM-HRMS)</span>
           <span class="skill-tag">Waters QqQ</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Chromatography & Sample Prep</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">(U)HPLC and nanoLC</span>
           <span class="skill-tag">Opentrons</span>
         </div>
       </div>
       <div class="skill-group">
-        <h4>Software & Informatics</h4>
+        <h4>Bioinformatics & Software</h4>
         <div class="skill-tags">
-          <span class="skill-tag">Smartsheet</span>
-          <span class="skill-tag">MS-Office</span>
-          <span class="skill-tag">R</span>
-          <span class="skill-tag">GitHub (basic)</span>
-          <span class="skill-tag">Python (basic)</span>
-          <span class="skill-tag">LaTeX</span>
-          <span class="skill-tag">Illustrator</span>
+          <span class="skill-tag">RStudio</span>
+          <span class="skill-tag">AI-assisted coding</span>
           <span class="skill-tag">FragPipe</span>
           <span class="skill-tag">DIA-NN</span>
           <span class="skill-tag">Proteome Discoverer</span>
           <span class="skill-tag">MaxQuant / Perseus</span>
           <span class="skill-tag">Skyline</span>
-          <span class="skill-tag">Empower</span>
           <span class="skill-tag">Chromeleon</span>
           <span class="skill-tag">XCalibur</span>
-          <span class="skill-tag">timsControl</span>
+          <span class="skill-tag">timsControl / flexControl</span>
+          <span class="skill-tag">Smartsheet</span>
+          <span class="skill-tag">Illustrator</span>
+          <span class="skill-tag">MS Office</span>
+          <span class="skill-tag">LaTeX</span>
+          <span class="skill-tag">GitHub (basic)</span>
+          <span class="skill-tag">Python (basic)</span>
         </div>
       </div>
       <div class="skill-group">
@@ -538,7 +552,7 @@
         <div class="skill-tags">
           <span class="skill-tag">cGMP</span>
           <span class="skill-tag">ISO 17025</span>
-          <span class="skill-tag">ICH Guidelines</span>
+          <span class="skill-tag">ICH / EMA Guidelines</span>
           <span class="skill-tag">Pharmacopoeial methods</span>
         </div>
       </div>
@@ -554,10 +568,15 @@
     <div class="sidebar-block">
       <h3>Completed Courses</h3>
       <ul class="course-list">
-        <li>Bioinformatics</li>
-        <li>Method Validation and Statistics</li>
-        <li>Analytical Quality-by-Design</li>
-        <li>Introduction to ISO 17025</li>
+        <li><strong>MaxQuant Summer School</strong><br><span>MPI of Biochemistry · 2022</span></li>
+        <li><strong>LC-MS Method Validation</strong><br><span>University of Tartu · 2021</span></li>
+        <li><strong>Forced Degradation Studies</strong><br><span>CSA Educacional · 2020</span></li>
+        <li><strong>Organic Chemistry with Focus in Degradation Reactions and Drug-Excipient Interactions</strong><br><span>CSA Educacional · 2020</span></li>
+        <li><strong>Analytical Methods Validation and Statistics</strong><br><span>U.S. Pharmacopeia · 2019</span></li>
+        <li><strong>High-Performance Liquid Chromatography</strong><br><span>CEDAFAR · 2018</span></li>
+        <li><strong>Development of Stability-Indicating Methods</strong><br><span>U.S. Pharmacopeia · 2018</span></li>
+        <li><strong>HPLC Analysis in Method Development and Quality Control of Pharmaceutical Products</strong><br><span>CRF-MG · 2017</span></li>
+        <li><strong>Technical Seminar in HPLC – GC – Sample Preparation</strong><br><span>Allcrom · 2014</span></li>
       </ul>
     </div>
 
@@ -581,7 +600,5 @@
     el.style.display = el.style.display === 'block' ? 'none' : 'block';
   }
 </script>
-
 </body>
 </html>
-  
